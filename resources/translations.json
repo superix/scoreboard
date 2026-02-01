@@ -1,0 +1,326 @@
+{
+    "en": {
+        "dashboard": {
+            "cast": "Cast to Tablet",
+            "games": "Games",
+            "templates": "Templates",
+            "settings": "Settings"
+        },
+        "games": {
+            "title": "Games",
+            "play": "Play",
+            "edit": "Edit",
+            "delete": "Delete",
+            "cancel": "Cancel",
+            "confirmDelete": "Are you sure you want to delete this game?"
+        },
+        "templates": {
+            "title": "Templates",
+            "newTemplate": "New Template",
+            "startGame": "Start Game",
+            "edit": "Edit",
+            "delete": "Delete",
+            "cancel": "Cancel",
+            "confirmDelete": "Are you sure you want to delete this template?"
+        },
+        "templateEdit": {
+            "title": "New Template",
+            "name": "Template Name",
+            "namePlaceholder": "Enter template name",
+            "mode": "Mode",
+            "modeDown": "Downcounting",
+            "modeUp": "Upcounting",
+            "topValue": "Top Value",
+            "winningLogic": "Winning Logic",
+            "winningRush": "Rush score",
+            "winningExact": "Exact score",
+            "players": "Players",
+            "addPlayer": "Add Player",
+            "save": "SAVE",
+            "cancel": "CANCEL",
+            "errorName": "Please enter a template name",
+            "errorTopValue": "Top value must be positive",
+            "errorPlayers": "Please add at least one player",
+            "maxPlayers": "Maximum 6 players allowed"
+        },
+        "gamePlay": {
+            "pause": "PAUSE",
+            "setPlayerInTurn": "Set as Player in Turn",
+            "undo": "Undo",
+            "redo": "Redo",
+            "cancel": "Cancel"
+        },
+        "scoreModal": {
+            "title": "Add Score",
+            "placeholder": "Enter score",
+            "submit": "SUB & NEXT",
+            "cancel": "CANCEL",
+            "invalidScore": "Please enter a valid score"
+        },
+        "gameNameModal": {
+            "title": "New Game",
+            "placeholder": "Enter game name",
+            "start": "START",
+            "cancel": "CANCEL",
+            "errorName": "Please enter a game name"
+        },
+        "settings": {
+            "title": "Settings",
+            "defaultMode": "Template default mode",
+            "defaultTopValue": "Template default top value",
+            "defaultPlayers": "Template default players",
+            "language": "Language",
+            "backgroundColor": "Background color",
+            "foregroundColor": "Foreground color",
+            "save": "SAVE",
+            "cancel": "CANCEL"
+        },
+        "tablet": {
+            "waitingForGame": "Waiting for game...",
+            "winner": "WINNER!"
+        }
+    },
+    "it": {
+        "dashboard": {
+            "cast": "Trasmetti al Tablet",
+            "games": "Partite",
+            "templates": "Modelli",
+            "settings": "Impostazioni"
+        },
+        "games": {
+            "title": "Partite",
+            "play": "Gioca",
+            "edit": "Modifica",
+            "delete": "Elimina",
+            "cancel": "Annulla",
+            "confirmDelete": "Sei sicuro di voler eliminare questa partita?"
+        },
+        "templates": {
+            "title": "Modelli",
+            "newTemplate": "Nuovo Modello",
+            "startGame": "Inizia Partita",
+            "edit": "Modifica",
+            "delete": "Elimina",
+            "cancel": "Annulla",
+            "confirmDelete": "Sei sicuro di voler eliminare questo modello?"
+        },
+        "templateEdit": {
+            "title": "Nuovo Modello",
+            "name": "Nome Modello",
+            "namePlaceholder": "Inserisci nome modello",
+            "mode": "Modalità",
+            "modeDown": "Decrescente",
+            "modeUp": "Crescente",
+            "topValue": "Valore Massimo",
+            "winningLogic": "Logica di Vittoria",
+            "winningRush": "Punteggio rapido",
+            "winningExact": "Punteggio esatto",
+            "players": "Giocatori",
+            "addPlayer": "Aggiungi Giocatore",
+            "save": "SALVA",
+            "cancel": "ANNULLA",
+            "errorName": "Inserisci un nome per il modello",
+            "errorTopValue": "Il valore massimo deve essere positivo",
+            "errorPlayers": "Aggiungi almeno un giocatore",
+            "maxPlayers": "Massimo 6 giocatori consentiti"
+        },
+        "gamePlay": {
+            "pause": "PAUSA",
+            "setPlayerInTurn": "Imposta come Giocatore di Turno",
+            "undo": "Revoca",
+            "redo": "Ripeti",
+            "cancel": "Annulla"
+        },
+        "scoreModal": {
+            "title": "Aggiungi Punteggio",
+            "placeholder": "Inserisci punteggio",
+            "submit": "CONF & SUCC",
+            "cancel": "ANNULLA",
+            "invalidScore": "Inserisci un punteggio valido"
+        },
+        "gameNameModal": {
+            "title": "Nuova Partita",
+            "placeholder": "Inserisci nome partita",
+            "start": "INIZIA",
+            "cancel": "ANNULLA",
+            "errorName": "Inserisci un nome per la partita"
+        },
+        "settings": {
+            "title": "Impostazioni",
+            "defaultMode": "Modalità predefinita modello",
+            "defaultTopValue": "Valore massimo predefinito",
+            "defaultPlayers": "Giocatori predefiniti",
+            "language": "Lingua",
+            "backgroundColor": "Colore sfondo",
+            "foregroundColor": "Colore primo piano",
+            "save": "SALVA",
+            "cancel": "ANNULLA"
+        },
+        "tablet": {
+            "waitingForGame": "In attesa di partita...",
+            "winner": "VINCITORE!"
+        }
+    },
+    "es": {
+        "dashboard": {
+            "cast": "Transmitir a Tableta",
+            "games": "Partidas",
+            "templates": "Plantillas",
+            "settings": "Configuración"
+        },
+        "games": {
+            "title": "Partidas",
+            "play": "Jugar",
+            "edit": "Editar",
+            "delete": "Eliminar",
+            "cancel": "Cancelar",
+            "confirmDelete": "¿Estás seguro de eliminar esta partida?"
+        },
+        "templates": {
+            "title": "Plantillas",
+            "newTemplate": "Nueva Plantilla",
+            "startGame": "Iniciar Partida",
+            "edit": "Editar",
+            "delete": "Eliminar",
+            "cancel": "Cancelar",
+            "confirmDelete": "¿Estás seguro de eliminar esta plantilla?"
+        },
+        "templateEdit": {
+            "title": "Nueva Plantilla",
+            "name": "Nombre de Plantilla",
+            "namePlaceholder": "Ingrese nombre de plantilla",
+            "mode": "Modo",
+            "modeDown": "Descendente",
+            "modeUp": "Ascendente",
+            "topValue": "Valor Máximo",
+            "winningLogic": "Lógica de Victoria",
+            "winningRush": "Puntuación rápida",
+            "winningExact": "Puntuación exacta",
+            "players": "Jugadores",
+            "addPlayer": "Agregar Jugador",
+            "save": "GUARDAR",
+            "cancel": "CANCELAR",
+            "errorName": "Ingrese un nombre para la plantilla",
+            "errorTopValue": "El valor máximo debe ser positivo",
+            "errorPlayers": "Agregue al menos un jugador",
+            "maxPlayers": "Máximo 6 jugadores permitidos"
+        },
+        "gamePlay": {
+            "pause": "PAUSA",
+            "setPlayerInTurn": "Establecer como Jugador en Turno",
+            "undo": "Deshacer",
+            "redo": "Rehacer",
+            "cancel": "Cancelar"
+        },
+        "scoreModal": {
+            "title": "Agregar Puntuación",
+            "placeholder": "Ingrese puntuación",
+            "submit": "CONF & SIG",
+            "cancel": "CANCELAR",
+            "invalidScore": "Ingrese una puntuación válida"
+        },
+        "gameNameModal": {
+            "title": "Nueva Partida",
+            "placeholder": "Ingrese nombre de partida",
+            "start": "INICIAR",
+            "cancel": "CANCELAR",
+            "errorName": "Ingrese un nombre para la partida"
+        },
+        "settings": {
+            "title": "Configuración",
+            "defaultMode": "Modo predeterminado de plantilla",
+            "defaultTopValue": "Valor máximo predeterminado",
+            "defaultPlayers": "Jugadores predeterminados",
+            "language": "Idioma",
+            "backgroundColor": "Color de fondo",
+            "foregroundColor": "Color de primer plano",
+            "save": "GUARDAR",
+            "cancel": "CANCELAR"
+        },
+        "tablet": {
+            "waitingForGame": "Esperando partida...",
+            "winner": "¡GANADOR!"
+        }
+    },
+    "fr": {
+        "dashboard": {
+            "cast": "Diffuser sur Tablette",
+            "games": "Parties",
+            "templates": "Modèles",
+            "settings": "Paramètres"
+        },
+        "games": {
+            "title": "Parties",
+            "play": "Jouer",
+            "edit": "Modifier",
+            "delete": "Supprimer",
+            "cancel": "Annuler",
+            "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette partie?"
+        },
+        "templates": {
+            "title": "Modèles",
+            "newTemplate": "Nouveau Modèle",
+            "startGame": "Démarrer Partie",
+            "edit": "Modifier",
+            "delete": "Supprimer",
+            "cancel": "Annuler",
+            "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce modèle?"
+        },
+        "templateEdit": {
+            "title": "Nouveau Modèle",
+            "name": "Nom du Modèle",
+            "namePlaceholder": "Entrez le nom du modèle",
+            "mode": "Mode",
+            "modeDown": "Descendant",
+            "modeUp": "Ascendant",
+            "topValue": "Valeur Maximale",
+            "winningLogic": "Logique de Victoire",
+            "winningRush": "Score rapide",
+            "winningExact": "Score exact",
+            "players": "Joueurs",
+            "addPlayer": "Ajouter Joueur",
+            "save": "ENREGISTRER",
+            "cancel": "ANNULER",
+            "errorName": "Veuillez entrer un nom de modèle",
+            "errorTopValue": "La valeur maximale doit être positive",
+            "errorPlayers": "Ajoutez au moins un joueur",
+            "maxPlayers": "Maximum 6 joueurs autorisés"
+        },
+        "gamePlay": {
+            "pause": "PAUSE",
+            "setPlayerInTurn": "Définir comme Joueur en Tour",
+            "undo": "Annuler",
+            "redo": "Refaire",
+            "cancel": "Annuler"
+        },
+        "scoreModal": {
+            "title": "Ajouter Score",
+            "placeholder": "Entrez le score",
+            "submit": "CONF & SUIV",
+            "cancel": "ANNULER",
+            "invalidScore": "Veuillez entrer un score valide"
+        },
+        "gameNameModal": {
+            "title": "Nouvelle Partie",
+            "placeholder": "Entrez le nom de la partie",
+            "start": "DÉMARRER",
+            "cancel": "ANNULER",
+            "errorName": "Veuillez entrer un nom de partie"
+        },
+        "settings": {
+            "title": "Paramètres",
+            "defaultMode": "Mode par défaut du modèle",
+            "defaultTopValue": "Valeur maximale par défaut",
+            "defaultPlayers": "Joueurs par défaut",
+            "language": "Langue",
+            "backgroundColor": "Couleur de fond",
+            "foregroundColor": "Couleur de premier plan",
+            "save": "ENREGISTRER",
+            "cancel": "ANNULER"
+        },
+        "tablet": {
+            "waitingForGame": "En attente de partie...",
+            "winner": "GAGNANT!"
+        }
+    }
+}

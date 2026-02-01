@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #000;
+    overflow: hidden;
+}
+
+.tablet-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background: #cccccc;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+.screen.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Waiting Screen */
+.waiting-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.waiting-text {
+    font-size: 48px; /* Larger for TV */
+    color: #666;
+    font-style: italic;
+}
+
+.logo-large-img {
+    height: 300px; /* Larger for TV */
+    width: auto;
+}
+
+/* Game Display */
+#tablet-players-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    align-content: start;
+}
+
+.tablet-player-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-height: 220px; /* Taller for TV visibility */
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tablet-player-card.active {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 4px solid var(--player-color); /* clearer active indication */
+}
+
+.tablet-player-card.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: var(--player-color);
+}
+
+.tablet-player-card.winner {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.tablet-player-name {
+    font-size: 48px; /* Larger */
+    color: var(--player-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.tablet-player-score {
+    font-size: 100px; /* Larger */
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+    color: var(--player-color);
+    margin-bottom: 10px;
+}
+
+.tablet-player-history {
+    font-size: 32px; /* Larger */
+    color: #666;
+    font-family: 'Consolas', monospace;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Winner Screen */
+.winner-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    animation: celebration 2s ease-in-out infinite;
+}
+
+@keyframes celebration {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.winner-title {
+    font-size: 96px;
+    color: #000080;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+#winner-info {
+    background: white;
+    padding: 60px 100px;
+    border-radius: 30px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.winner-player-name {
+    font-size: 64px;
+    color: var(--player-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.winner-player-score {
+    font-size: 140px;
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+    color: var(--player-color);
+}
+
+/* Compact layout for 5-6 players */
+#tablet-players-container.six-players .tablet-player-card {
+    min-height: 180px;
+    padding: 10px 20px;
+}
+#tablet-players-container.six-players .tablet-player-name {
+    font-size: 36px;
+}
+#tablet-players-container.six-players .tablet-player-score {
+    font-size: 72px;
+}
+#tablet-players-container.six-players .tablet-player-history {
+    font-size: 24px;
+}
+
+#other-players-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 0 40px;
+}
+
+.other-player-card {
+    background: white;
+    border: 4px solid var(--player-color);
+    border-radius: 15px;
+    padding: 20px 30px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.other-player-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--player-color);
+}
+
+.other-player-score {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--player-color);
+}
