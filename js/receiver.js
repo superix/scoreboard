@@ -62,18 +62,87 @@ try {
         // Data structure expected: { type: 'game-state', game: ... }
         if (data.type === 'game-state') {
             receiverState.game = data.game;
-            // Ensure we clear waiting screen if we have a game
-            if (receiverState.game) {
+
+            // Message Handling: Pause State
+            // Issue #1: If paused, show waiting screen (or could be specific paused screen)
+            if (receiverState.game && receiverState.game.isPaused) {
+                showScreen('waiting-screen'); // Or potentially a custom 'paused-screen'
+                if (debugOverlay) debugOverlay.textContent = 'Game Paused';
+            }
+            // Normal Game State
+            else if (receiverState.game) {
                 if (receiverState.game.winner) {
                     showWinnerScreen();
                 } else {
                     showGameDisplay();
                 }
+            } else {
+                // Null game means waiting
+                showScreen('waiting-screen');
             }
+
+            // Apply Settings (Rotation)
+            // Issue #2: Rotation. Use data.settings if available
+            if (data.settings && data.settings.castRotation) {
+                receiverState.rotation = data.settings.castRotation;
+                updateScale();
+            }
+
         } else if (data.type === 'ping') {
-            // Keep alive
+            // Keep alive or handshake
         }
     }
+
+    // Scaling & Rotation Logic (Issue #2 & #3)
+    const DESIGN_WIDTH = 1920;
+    const DESIGN_HEIGHT = 1080;
+
+    function updateScale() {
+        const viewport = document.getElementById('viewport');
+        if (!viewport) return;
+
+        // Apply rotation class first
+        viewport.classList.remove('rotate-90', 'rotate-270'); // Clean up
+        let isRotated = false;
+
+        if (receiverState.rotation === 'portrait-cw') {
+            viewport.classList.add('rotate-90');
+            isRotated = true;
+        } else if (receiverState.rotation === 'portrait-ccw') {
+            viewport.classList.add('rotate-270');
+            isRotated = true;
+        }
+
+        const winW = window.innerWidth;
+        const winH = window.innerHeight;
+
+        // Determine target aspect ratio based on rotation
+        // If rotated, the visual width of viewport takes up Height of screen, and visual height takes up Width.
+        // Effectively, we are fitting a rectangle of (DW x DH) into (winW x winH).
+        // If Rotated: We fit (DH x DW) into (winW x winH).
+
+        let targetW = DESIGN_WIDTH;
+        let targetH = DESIGN_HEIGHT;
+
+        if (isRotated) {
+            // Swap dimensions for ratio calculation
+            targetW = DESIGN_HEIGHT;
+            targetH = DESIGN_WIDTH;
+        }
+
+        const scaleX = winW / targetW;
+        const scaleY = winH / targetH;
+
+        // Fit containment
+        const scale = Math.min(scaleX, scaleY); // * 0.95 for safety margin if needed
+
+        viewport.style.transform = `translate(-50%, -50%) ${isRotated ? (receiverState.rotation === 'portrait-cw' ? 'rotate(90deg)' : 'rotate(-90deg)') : ''} scale(${scale})`;
+    }
+
+    window.addEventListener('resize', updateScale);
+    // Initial call
+    updateScale();
+
 
     // Screen Logic (Adapted from tablet.js)
     function showScreen(screenId) {

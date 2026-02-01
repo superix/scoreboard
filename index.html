@@ -11,45 +11,48 @@
 </head>
 
 <body>
-    <div class="tablet-container">
-        <!-- Waiting Screen -->
-        <div id="waiting-screen" class="screen active">
-            <div class="waiting-content">
-                <!-- Ensure logo path is correct relative to where this runs (GitHub Pages root usually) -->
-                <!-- Assuming user pushes 'receiver' folder contents to root of gh-pages, or similar structure -->
-                <!-- We will use relative path assuming resources is parallel if entire src is pushed, or adjusted by user -->
-                <!-- For safety in a standalone repo, we might need embedded or absolute path, but let's try relative assuming standard structure -->
-                <img src="resources/logo.png" alt="Dart Rick Logo" class="logo-large-img">
-                <p class="waiting-text">Waiting for game...</p>
-                <div id="debug-info" style="color: #666; font-size: 14px; margin-top: 20px;"></div>
-            </div>
-        </div>
+    <!-- Main Scaling Viewport -->
+    <div id="viewport">
+        <div class="tablet-container">
 
-        <!-- Game Display Screen -->
-        <div id="game-display-screen" class="screen">
-            <div id="tablet-players-container">
-                <!-- Player cards will be populated by JavaScript -->
-            </div>
-        </div>
-
-        <!-- Winner Screen -->
-        <div id="winner-screen" class="screen">
-            <div class="winner-content">
-                <h1 class="winner-title">🎉 Winner! 🎉</h1>
-                <div id="winner-info">
-                    <!-- Winner information will be populated by JavaScript -->
-                </div>
-                <div id="other-players-container">
-                    <!-- Non-winner player cards will be populated by JavaScript -->
+            <!-- Waiting Screen -->
+            <div id="waiting-screen" class="screen active">
+                <div class="waiting-content">
+                    <img src="resources/logo.png" alt="Dart Rick Logo" class="logo-large-img">
+                    <p class="waiting-text">Waiting for game...</p>
+                    <div id="debug-info" style="color: #666; font-size: 14px; margin-top: 20px;"></div>
                 </div>
             </div>
+
+            <!-- Game Display Screen -->
+            <div id="game-display-screen" class="screen">
+                <div id="tablet-players-container">
+                    <!-- Player cards will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Winner Screen -->
+            <div id="winner-screen" class="screen">
+                <div class="winner-content">
+                    <h1 class="winner-title">🎉 Winner! 🎉</h1>
+                    <div id="winner-info">
+                        <!-- Winner information will be populated by JavaScript -->
+                    </div>
+                    <div id="other-players-container">
+                        <!-- Non-winner player cards will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
+    <!-- Debug Overlay -->
     <div id="debug-overlay"
         style="position: absolute; bottom: 10px; left: 10px; color: red; font-size: 20px; z-index: 9999; background: rgba(0,0,0,0.7); padding: 10px;">
         Init...
     </div>
+
     <script>
         document.getElementById('debug-overlay').textContent = 'Inline JS Running...';
         window.onerror = function (msg, url, line) {

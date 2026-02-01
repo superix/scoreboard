@@ -8,15 +8,40 @@ body {
     font-family: 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #000;
     overflow: hidden;
-}
-
-.tablet-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
-    margin: 0 auto;
+}
+
+/* Scaling Container */
+#viewport {
+    width: 1920px;
+    /* Reference Design Width */
+    height: 1080px;
+    /* Reference Design Height */
     background: #cccccc;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     overflow: hidden;
+    transform-origin: center center;
+    /* Transformation will be applied by JS: translate(-50%, -50%) scale(...) */
+}
+
+/* Default Horizontal */
+.tablet-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Rotation Override */
+.rotate-90 {
+    transform: rotate(-90deg);
+    /* Adjust based on mount */
 }
 
 /* Screen Management */
@@ -47,13 +72,15 @@ body {
 }
 
 .waiting-text {
-    font-size: 48px; /* Larger for TV */
+    font-size: 48px;
+    /* Larger for TV */
     color: #666;
     font-style: italic;
 }
 
 .logo-large-img {
-    height: 300px; /* Larger for TV */
+    height: 300px;
+    /* Larger for TV */
     width: auto;
 }
 
@@ -77,7 +104,8 @@ body {
     align-items: center;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-height: 220px; /* Taller for TV visibility */
+    min-height: 220px;
+    /* Taller for TV visibility */
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
@@ -86,7 +114,8 @@ body {
 .tablet-player-card.active {
     transform: scale(1.02);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: 4px solid var(--player-color); /* clearer active indication */
+    border: 4px solid var(--player-color);
+    /* clearer active indication */
 }
 
 .tablet-player-card.active::before {
@@ -104,12 +133,20 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
 }
 
 .tablet-player-name {
-    font-size: 48px; /* Larger */
+    font-size: 48px;
+    /* Larger */
     color: var(--player-color);
     margin-bottom: 10px;
     font-weight: 500;
@@ -117,7 +154,8 @@ body {
 }
 
 .tablet-player-score {
-    font-size: 100px; /* Larger */
+    font-size: 100px;
+    /* Larger */
     font-weight: bold;
     font-family: 'Consolas', monospace;
     color: var(--player-color);
@@ -125,7 +163,8 @@ body {
 }
 
 .tablet-player-history {
-    font-size: 32px; /* Larger */
+    font-size: 32px;
+    /* Larger */
     color: #666;
     font-family: 'Consolas', monospace;
     line-height: 1.4;
@@ -147,8 +186,15 @@ body {
 }
 
 @keyframes celebration {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .winner-title {
@@ -159,8 +205,15 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-30px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
 }
 
 #winner-info {
@@ -189,12 +242,15 @@ body {
     min-height: 180px;
     padding: 10px 20px;
 }
+
 #tablet-players-container.six-players .tablet-player-name {
     font-size: 36px;
 }
+
 #tablet-players-container.six-players .tablet-player-score {
     font-size: 72px;
 }
+
 #tablet-players-container.six-players .tablet-player-history {
     font-size: 24px;
 }
