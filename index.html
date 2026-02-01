@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <!-- Google Cast Receiver SDK -->
     <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
 </head>
+
 <body>
     <div class="tablet-container">
         <!-- Waiting Screen -->
@@ -44,6 +46,17 @@
         </div>
     </div>
 
+    <div id="debug-overlay"
+        style="position: absolute; bottom: 10px; left: 10px; color: red; font-size: 20px; z-index: 9999; background: rgba(0,0,0,0.7); padding: 10px;">
+        Init...
+    </div>
+    <script>
+        document.getElementById('debug-overlay').textContent = 'Inline JS Running...';
+        window.onerror = function (msg, url, line) {
+            document.getElementById('debug-overlay').textContent = 'Error: ' + msg + ' @ ' + line;
+        };
+    </script>
     <script src="js/receiver.js"></script>
 </body>
+
 </html>
