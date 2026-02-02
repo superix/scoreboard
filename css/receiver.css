@@ -91,7 +91,8 @@ body {
     flex-direction: column;
     gap: 20px;
     padding: 30px;
-    align-content: start;
+    align-content: stretch;
+    /* Ensure children stretch */
 }
 
 .tablet-player-card {
@@ -99,23 +100,25 @@ body {
     border-radius: 15px;
     padding: 20px 40px;
     display: flex;
+    flex: 1;
+    /* Default: Grow to fill vertical space in column mode */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-height: 220px;
-    /* Taller for TV visibility */
+    min-height: 150px;
+    /* Reduced min-height to allow fitting many players if needed */
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
 }
 
+/* Missing Active/Winner Styles */
 .tablet-player-card.active {
     transform: scale(1.02);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border: 4px solid var(--player-color);
-    /* clearer active indication */
 }
 
 .tablet-player-card.active::before {
@@ -144,36 +147,85 @@ body {
     }
 }
 
+/* Inner Card Layout - Name next to Score */
 .tablet-player-name {
     font-size: 48px;
-    /* Larger */
     color: var(--player-color);
-    margin-bottom: 10px;
     font-weight: 500;
     line-height: 1.2;
+    /* Grid placement if using grid, or just order */
 }
 
 .tablet-player-score {
     font-size: 100px;
-    /* Larger */
     font-weight: bold;
     font-family: 'Consolas', monospace;
     color: var(--player-color);
-    margin-bottom: 10px;
 }
 
 .tablet-player-history {
     font-size: 32px;
-    /* Larger */
     color: #666;
     font-family: 'Consolas', monospace;
-    line-height: 1.4;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: auto;
+    /* Push to bottom */
+    width: 100%;
 }
 
-/* Winner Screen */
+/* User Request: Name next to Score */
+/* We generally want centered text, but if they want side-by-side: */
+.tablet-player-card {
+    /* Using Flex row behavior for main content? No, mixed. Use Grid. */
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "name score"
+        "history history";
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.tablet-player-name {
+    grid-area: name;
+    text-align: left;
+    font-size: 56px;
+    /* Larger */
+}
+
+.tablet-player-score {
+    grid-area: score;
+    text-align: right;
+    font-size: 110px;
+    /* Prominent */
+}
+
+/* If the name is too long, wrap it? */
+.tablet-player-card .tablet-player-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tablet-player-history {
+    grid-area: history;
+    text-align: center;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    font-size: 42px;
+    /* 50% bigger than 28px */
+    color: #333;
+    /* 80% Gray (Darker) */
+    font-weight: bold;
+    /* Make it pop */
+}
+
+
+/* Winner Screen Elements (Restored) */
 .winner-content {
     flex: 1;
     display: flex;
@@ -237,8 +289,8 @@ body {
     color: var(--player-color);
 }
 
-/* Compact layout for 5-6 players (Landscape) */
-#tablet-players-container.six-players {
+/* Compact layout for 4-6 players (Grid) */
+#tablet-players-container.grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: 1fr;
@@ -247,29 +299,29 @@ body {
     padding: 30px;
 }
 
-#tablet-players-container.six-players .tablet-player-card {
+#tablet-players-container.grid-layout .tablet-player-card {
     min-height: 0;
     /* Allow grid to control height */
-    padding: 10px 20px;
-    /* Compact padding */
+    padding: 15px 30px;
     height: 100%;
     margin: 0;
-    /* Remove margin, use gap */
 }
 
-#tablet-players-container.six-players .tablet-player-name {
+/* Adjust sizes for compact grid */
+#tablet-players-container.grid-layout .tablet-player-name {
+    font-size: 40px;
+}
+
+#tablet-players-container.grid-layout .tablet-player-score {
+    font-size: 80px;
+}
+
+#tablet-players-container.grid-layout .tablet-player-history {
     font-size: 36px;
 }
 
-#tablet-players-container.six-players .tablet-player-score {
-    font-size: 80px;
-    /* Slightly larger than before */
-}
 
-#tablet-players-container.six-players .tablet-player-history {
-    font-size: 24px;
-}
-
+/* Other Players (Winner Screen) */
 #other-players-container {
     display: flex;
     flex-wrap: wrap;
@@ -292,20 +344,23 @@ body {
 }
 
 .other-player-name {
+    width: auto;
     font-size: 24px;
     font-weight: bold;
     color: var(--player-color);
 }
 
 .other-player-score {
+    width: auto;
     font-size: 48px;
     font-weight: bold;
     color: var(--player-color);
 }
 
+
 /* Portrait Mode Overrides (Reflow) */
 .portrait-mode #tablet-players-container,
-.portrait-mode #tablet-players-container.six-players {
+.portrait-mode #tablet-players-container.grid-layout {
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -316,14 +371,14 @@ body {
 
 /* Stack players vertically and fill space */
 .portrait-mode .tablet-player-card,
-.portrait-mode #tablet-players-container.six-players .tablet-player-card {
+.portrait-mode #tablet-players-container.grid-layout .tablet-player-card {
     flex: 1;
     /* vital: grow to fill vertical space */
     min-height: 0;
     margin-bottom: 20px;
     display: flex;
-    justify-content: center;
-    /* Center content vertically in card */
+    /* flex or grid? override to grid if we used grid above, but let's keep grid for inner layout */
+    /* Inner layout remains grid */
     width: 100%;
     /* Ensure full width */
 }
@@ -334,11 +389,15 @@ body {
 }
 
 .portrait-mode .tablet-player-name {
-    font-size: 60px;
+    font-size: 64px;
 }
 
 .portrait-mode .tablet-player-score {
     font-size: 140px;
+}
+
+.portrait-mode .tablet-player-history {
+    font-size: 48px;
 }
 
 /* Waiting Screen in Portrait */
