@@ -226,6 +226,7 @@ body {
 
 
 /* Winner Screen Elements (Restored) */
+/* Winner Screen Elements (Restored & Improved) */
 .winner-content {
     flex: 1;
     display: flex;
@@ -234,26 +235,28 @@ body {
     align-items: center;
     gap: 50px;
     background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
-    animation: celebration 2s ease-in-out infinite;
+    animation: celebration 3s ease-in-out infinite alternate;
 }
 
 @keyframes celebration {
-
-    0%,
-    100% {
+    0% {
         background-position: 0% 50%;
     }
 
-    50% {
+    100% {
         background-position: 100% 50%;
     }
 }
 
 .winner-title {
-    font-size: 96px;
+    font-size: 120px;
+    /* Bigger */
     color: #000080;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 4px 4px 15px rgba(255, 255, 255, 0.4);
     animation: bounce 2s ease-in-out infinite;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 }
 
 @keyframes bounce {
@@ -271,22 +274,69 @@ body {
 #winner-info {
     background: white;
     padding: 60px 100px;
-    border-radius: 30px;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border: 8px solid var(--player-color);
+
+    /* Layout: Name left, Score right */
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine effect */
+#winner-info::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
 }
 
 .winner-player-name {
-    font-size: 64px;
+    font-size: 90px;
     color: var(--player-color);
-    margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .winner-player-score {
-    font-size: 140px;
-    font-weight: bold;
+    font-size: 180px;
+    font-weight: 900;
     font-family: 'Consolas', monospace;
     color: var(--player-color);
+}
+
+.winner-label {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    color: #ffd700;
+    background: #333;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: none;
+    /* Optional */
 }
 
 /* Compact layout for 4-6 players (Grid) */
@@ -322,39 +372,45 @@ body {
 
 
 /* Other Players (Winner Screen) */
+/* Other Players (Winner Screen) */
 #other-players-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     margin-top: 40px;
     padding: 0 40px;
+    width: 100%;
 }
 
 .other-player-card {
-    background: white;
-    border: 4px solid var(--player-color);
+    background: rgba(255, 255, 255, 0.9);
+    border: 3px solid var(--player-color);
     border-radius: 15px;
-    padding: 20px 30px;
-    min-width: 200px;
+    padding: 15px 30px;
+    min-width: 250px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* Horizontal for compactness? Or column? Let's go Row for sleekness */
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .other-player-name {
     width: auto;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: var(--player-color);
 }
 
 .other-player-score {
     width: auto;
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 56px;
+    font-weight: 900;
     color: var(--player-color);
+    font-family: 'Consolas', monospace;
 }
 
 

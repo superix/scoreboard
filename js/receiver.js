@@ -257,14 +257,39 @@ try {
         // Render main winner card
         winnerContainer.style.setProperty('--player-color', winner.color);
         const scoreDisplay = winner.hasWon ? 'WIN' : winner.score;
+
+        // Match standard card layout for consistency, but bigger
         winnerContainer.innerHTML = `
             <div class="winner-player-name">${winner.name}</div>
             <div class="winner-player-score">${scoreDisplay}</div>
+            <div class="winner-label">CHAMPION</div> 
         `;
 
         // Render non-winner player cards
         othersContainer.innerHTML = '';
-        const otherPlayers = receiverState.game.players.filter(p => p.name !== winner.name); // Simple name check or id if available
+
+        // Sort others by score (descending) to show ranking
+        // Note: In 501, higher score is often worse if we are counting down? 
+        // Wait, standard darts is countdown 501 -> 0. So LOWEST score is better.
+        // Assuming Standard behavior: Sort Ascending for 501/301.
+        // But let's check game mode. If `defaultMode` is 'down', lowest is best.
+        // If 'up' (Cricket?), highest is best.
+        // Receiver might not know logic easily. Let's assume standard sorting by "rank" if available, or just score.
+        // For now, let's just show them.
+
+        const otherPlayers = receiverState.game.players
+            .filter(p => p.name !== winner.name)
+            .sort((a, b) => {
+                // User Logic:
+                // - increasing score in upcounting mode (a - b)
+                // - decreasing score in downcounting mode (b - a)
+
+                if (receiverState.game.mode === 'up') {
+                    return a.score - b.score;
+                }
+                // Default to 'down' logic
+                return b.score - a.score;
+            });
 
         otherPlayers.forEach(player => {
             const card = document.createElement('div');
