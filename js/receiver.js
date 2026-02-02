@@ -125,18 +125,51 @@ try {
         let targetH = DESIGN_HEIGHT;
 
         if (isRotated) {
-            // Swap dimensions for ratio calculation
+            // Swap dimensions for layout AND scaling
             targetW = DESIGN_HEIGHT;
             targetH = DESIGN_WIDTH;
+
+            // Set explicit size on viewport to force re-flow
+            viewport.style.width = targetW + 'px';
+            viewport.style.height = targetH + 'px';
+            viewport.classList.add('portrait-mode');
+        } else {
+            // Reset to defaults
+            viewport.style.width = DESIGN_WIDTH + 'px';
+            viewport.style.height = DESIGN_HEIGHT + 'px';
+            viewport.classList.remove('portrait-mode');
         }
 
-        const scaleX = winW / targetW;
-        const scaleY = winH / targetH;
+        let scaleX, scaleY;
+
+        if (isRotated) {
+            // scaleX is how much the "height" of the window can fit the "width" of the design
+            scaleX = winH / targetW;
+
+            // scaleY is how much the "width" of the window can fit the "height" of the design
+            scaleY = winW / targetH;
+        } else {
+            scaleX = winW / targetW;
+            scaleY = winH / targetH;
+        }
 
         // Fit containment
-        const scale = Math.min(scaleX, scaleY); // * 0.95 for safety margin if needed
+        const scale = Math.min(scaleX, scaleY);
+
+        // Apply transform
+        // Note: When we set width/height to 1080/1920 (Portrait), we are creating a Tall box.
+        // If we rotate it 90deg, it becomes Wide.
+        // Wait, if content flows for 1080 width, and we verify rotation...
+        // If TV is physical portrait, screen is 1080x1920?
+        // If Chromecast is landscape (1920x1080), we see sideways.
+        // We rotate 90. Box is now upright.
+        // Content flows into box.
 
         viewport.style.transform = `translate(-50%, -50%) ${isRotated ? (receiverState.rotation === 'portrait-cw' ? 'rotate(90deg)' : 'rotate(-90deg)') : ''} scale(${scale})`;
+
+        if (debugOverlay) {
+            debugOverlay.textContent = `Res: ${winW}x${winH} | Scale: ${scale.toFixed(4)} | Rot: ${isRotated ? receiverState.rotation : 'none'}`;
+        }
     }
 
     window.addEventListener('resize', updateScale);
@@ -173,11 +206,11 @@ try {
         const container = document.getElementById('tablet-players-container');
         container.innerHTML = '';
 
-        // Add class for 6 players layout to scale down fonts
-        if (receiverState.game.players.length >= 5) {
-            container.classList.add('six-players');
+        // Add class for grid layout (4+ players)
+        if (receiverState.game.players.length >= 4) {
+            container.classList.add('grid-layout');
         } else {
-            container.classList.remove('six-players');
+            container.classList.remove('grid-layout');
         }
 
         receiverState.game.players.forEach((player, index) => {
