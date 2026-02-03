@@ -1,8 +1,5 @@
 // Receiver Logic
 try {
-    const debugOverlay = document.getElementById('debug-overlay');
-    if (debugOverlay) debugOverlay.textContent += ' | js/receiver.js Loaded';
-
     const context = cast.framework.CastReceiverContext.getInstance();
     const NAMESPACE = 'urn:x-cast:com.score.board';
 
@@ -23,25 +20,18 @@ try {
 
     // Also log system events
     context.addEventListener(cast.framework.system.EventType.SENDER_CONNECTED, (event) => {
-        if (debugOverlay) debugOverlay.textContent = 'Sender Connected: ' + event.senderId;
+        // console.log('Sender Connected: ' + event.senderId);
     });
 
     context.addEventListener(cast.framework.system.EventType.SENDER_DISCONNECTED, (event) => {
-        if (debugOverlay) debugOverlay.textContent = 'Sender Disconnected';
+        // console.log('Sender Disconnected');
     });
 
     // Initialize - triggers the receiver to be ready
     // Must pass options here for custom namespace to work
     context.start(options);
-    if (debugOverlay) debugOverlay.textContent += ' | Context Started';
-
-
-    // Debug
-    const infoEl = document.getElementById('debug-info');
-    if (infoEl) infoEl.textContent = 'Receiver Ready. Waiting for signals...';
 
     function handleMessage(data) {
-        if (debugOverlay) debugOverlay.textContent = 'Msg received...';
 
         // Parse if string
         if (typeof data === 'string') {
@@ -49,14 +39,8 @@ try {
                 data = JSON.parse(data);
             } catch (e) {
                 console.error('JSON Parse error', e);
-                if (debugOverlay) debugOverlay.textContent = 'Error parsing message: ' + e.message;
                 return;
             }
-        }
-
-        // Debug logging
-        if (debugOverlay) {
-            debugOverlay.textContent = 'Rx: ' + (data.type || 'unknown') + ' ' + new Date().toLocaleTimeString();
         }
 
         // Data structure expected: { type: 'game-state', game: ... }
@@ -67,7 +51,6 @@ try {
             // Issue #1: If paused, show waiting screen (or could be specific paused screen)
             if (receiverState.game && receiverState.game.isPaused) {
                 showScreen('waiting-screen'); // Or potentially a custom 'paused-screen'
-                if (debugOverlay) debugOverlay.textContent = 'Game Paused';
             }
             // Normal Game State
             else if (receiverState.game) {
@@ -167,10 +150,6 @@ try {
         // Content flows into box.
 
         viewport.style.transform = `translate(-50%, -50%) ${isRotated ? (receiverState.rotation === 'portrait-cw' ? 'rotate(90deg)' : 'rotate(-90deg)') : ''} scale(${scale})`;
-
-        if (debugOverlay) {
-            debugOverlay.textContent = `Res: ${winW}x${winH} | Scale: ${scale.toFixed(4)} | Rot: ${isRotated ? receiverState.rotation : 'none'}`;
-        }
     }
 
     window.addEventListener('resize', updateScale);
@@ -309,6 +288,5 @@ try {
     }
 
 } catch (err) {
-    const errOverlay = document.getElementById('debug-overlay');
-    if (errOverlay) errOverlay.textContent = 'CRITICAL JS ERROR: ' + err.message;
+    console.error('CRITICAL JS ERROR: ' + err.message);
 }
