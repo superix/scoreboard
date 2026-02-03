@@ -148,33 +148,7 @@ body {
 }
 
 /* Inner Card Layout - Name next to Score */
-.tablet-player-name {
-    font-size: 48px;
-    color: var(--player-color);
-    font-weight: 500;
-    line-height: 1.2;
-    /* Grid placement if using grid, or just order */
-}
-
-.tablet-player-score {
-    font-size: 100px;
-    font-weight: bold;
-    font-family: 'Consolas', monospace;
-    color: var(--player-color);
-}
-
-.tablet-player-history {
-    font-size: 32px;
-    color: #666;
-    font-family: 'Consolas', monospace;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: auto;
-    /* Push to bottom */
-    width: 100%;
-}
-
+/* Inner Card Layout - Name next to Score */
 /* User Request: Name next to Score */
 /* We generally want centered text, but if they want side-by-side: */
 .tablet-player-card {
@@ -193,23 +167,28 @@ body {
 .tablet-player-name {
     grid-area: name;
     text-align: left;
-    font-size: 56px;
+    font-size: 64px;
     /* Larger */
+    color: var(--player-color);
+    font-weight: 500;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tablet-player-score {
     grid-area: score;
     text-align: right;
-    font-size: 110px;
+    font-size: 140px;
     /* Prominent */
+    font-weight: bold;
+    font-family: 'Consolas', monospace;
+    color: var(--player-color);
 }
 
 /* If the name is too long, wrap it? */
-.tablet-player-card .tablet-player-name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+/* .tablet-player-name styles already include overflow handling */
 
 .tablet-player-history {
     grid-area: history;
@@ -445,11 +424,11 @@ body {
 }
 
 .portrait-mode .tablet-player-name {
-    font-size: 64px;
+    font-size: 82px;
 }
 
 .portrait-mode .tablet-player-score {
-    font-size: 140px;
+    font-size: 180px;
 }
 
 .portrait-mode .tablet-player-history {
