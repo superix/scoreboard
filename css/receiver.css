@@ -471,3 +471,16 @@ body {
 .portrait-mode .winner-content {
     padding: 40px;
 }
+
+/* App Version Footer */
+.app-version {
+    margin-top: auto;
+    padding-bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Consolas', monospace;
+    font-size: 24px;
+    color: #333333;
+    opacity: 1.0;
+    z-index: 100;
+}

@@ -154,7 +154,8 @@ try {
         }
 
         // Fit containment
-        const scale = Math.min(scaleX, scaleY);
+        // Fit containment with 5% Safety Margin
+        const scale = Math.min(scaleX, scaleY) * 0.95;
 
         // Apply transform
         // Note: When we set width/height to 1080/1920 (Portrait), we are creating a Tall box.
