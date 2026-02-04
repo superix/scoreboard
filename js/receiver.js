@@ -66,9 +66,16 @@ try {
 
             // Apply Settings (Rotation)
             // Issue #2: Rotation. Use data.settings if available
-            if (data.settings && data.settings.castRotation) {
-                receiverState.rotation = data.settings.castRotation;
-                updateScale();
+            // Apply Settings (Rotation & Localization)
+            if (data.settings) {
+                if (data.settings.castRotation) {
+                    receiverState.rotation = data.settings.castRotation;
+                    updateScale();
+                }
+                if (data.settings.waitingText) {
+                    const waitingEl = document.querySelector('.waiting-text');
+                    if (waitingEl) waitingEl.textContent = data.settings.waitingText;
+                }
             }
 
         } else if (data.type === 'ping') {
