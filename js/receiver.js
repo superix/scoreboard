@@ -10,6 +10,7 @@ try {
 
     // Define options and custom namespace
     const options = new cast.framework.CastReceiverOptions();
+    options.maxInactivity = 1800; // 30 minutes
     options.customNamespaces = Object.assign({});
     options.customNamespaces[NAMESPACE] = cast.framework.system.MessageType.JSON;
 
