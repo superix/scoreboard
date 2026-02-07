@@ -10,7 +10,8 @@ try {
 
     // Define options and custom namespace
     const options = new cast.framework.CastReceiverOptions();
-    options.maxInactivity = 1800; // 30 minutes
+    options.disableIdleTimeout = true; // Disable timeout when media is not playing
+    options.maxInactivity = 1800; // 30 mins (probably not needed)
     options.customNamespaces = Object.assign({});
     options.customNamespaces[NAMESPACE] = cast.framework.system.MessageType.JSON;
 
@@ -80,7 +81,10 @@ try {
             }
 
         } else if (data.type === 'ping') {
-            // Keep alive or handshake
+            // Keep alive or handshake - Reply with Pong
+            if (event.senderId) {
+                context.sendCustomMessage(NAMESPACE, event.senderId, { type: 'pong' });
+            }
         }
     }
 

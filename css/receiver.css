@@ -338,7 +338,7 @@ body {
 
 /* Adjust sizes for compact grid */
 #tablet-players-container.grid-layout .tablet-player-name {
-    font-size: 40px;
+    font-size: 80px;
 }
 
 #tablet-players-container.grid-layout .tablet-player-score {
