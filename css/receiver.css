@@ -66,9 +66,11 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 40px;
+    padding-top: 220px;
+    /* Approx 20% of 1080px height */
 }
 
 .waiting-text {
@@ -148,7 +150,6 @@ body {
 }
 
 /* Inner Card Layout - Name next to Score */
-/* Inner Card Layout - Name next to Score */
 /* User Request: Name next to Score */
 /* We generally want centered text, but if they want side-by-side: */
 .tablet-player-card {
@@ -204,8 +205,7 @@ body {
 }
 
 
-/* Winner Screen Elements (Restored) */
-/* Winner Screen Elements (Restored & Improved) */
+/* Winner Screen Elements */
 .winner-content {
     flex: 1;
     display: flex;
@@ -338,19 +338,19 @@ body {
 
 /* Adjust sizes for compact grid */
 #tablet-players-container.grid-layout .tablet-player-name {
-    font-size: 80px;
+    font-size: 54px;
 }
 
 #tablet-players-container.grid-layout .tablet-player-score {
-    font-size: 80px;
+    font-size: 100px;
 }
 
 #tablet-players-container.grid-layout .tablet-player-history {
     font-size: 36px;
+    color: #4b4b4b;
 }
 
 
-/* Other Players (Winner Screen) */
 /* Other Players (Winner Screen) */
 #other-players-container {
     display: flex;

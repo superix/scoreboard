@@ -236,7 +236,13 @@ try {
         // Show last 6 scores
         const maxScores = 6;
         const displayHistory = scores.slice(-maxScores);
-        return displayHistory.join(' ');
+
+        // Use non-breaking spaces for guaranteed visual separation
+        let result = displayHistory.join('&nbsp;&nbsp;&nbsp;');
+        if (scores.length > maxScores) {
+            result = '...&nbsp;&nbsp;&nbsp;' + result;
+        }
+        return result;
     }
 
     function renderWinnerScreen() {
