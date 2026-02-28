@@ -74,9 +74,10 @@ body {
 }
 
 .waiting-text {
-    font-size: 48px;
+    font-size: 56px;
     /* Larger for TV */
-    color: #666;
+    color: #3a3a3a;
+    padding-top: 220px;
     font-style: italic;
 }
 
@@ -168,7 +169,7 @@ body {
 .tablet-player-name {
     grid-area: name;
     text-align: left;
-    font-size: 64px;
+    font-size: 72px;
     /* Larger */
     color: var(--player-color);
     font-weight: 500;
@@ -181,7 +182,7 @@ body {
 .tablet-player-score {
     grid-area: score;
     text-align: right;
-    font-size: 140px;
+    font-size: 160px;
     /* Prominent */
     font-weight: bold;
     font-family: 'Consolas', monospace;
@@ -193,12 +194,12 @@ body {
 
 .tablet-player-history {
     grid-area: history;
-    text-align: center;
+    text-align: left;
     border-top: 1px solid #eee;
     padding-top: 10px;
-    font-size: 42px;
+    font-size: 64px;
     /* 50% bigger than 28px */
-    color: #333;
+    color: #929292;
     /* 80% Gray (Darker) */
     font-weight: bold;
     /* Make it pop */
@@ -338,16 +339,17 @@ body {
 
 /* Adjust sizes for compact grid */
 #tablet-players-container.grid-layout .tablet-player-name {
-    font-size: 54px;
+    font-size: 64px;
 }
 
 #tablet-players-container.grid-layout .tablet-player-score {
-    font-size: 100px;
+    font-size: 128px;
 }
 
 #tablet-players-container.grid-layout .tablet-player-history {
-    font-size: 36px;
-    color: #4b4b4b;
+    font-size: 56px;
+    color: #929292;
+    text-align: left;
 }
 
 
@@ -433,6 +435,7 @@ body {
 
 .portrait-mode .tablet-player-history {
     font-size: 48px;
+    text-align: left;
 }
 
 /* Waiting Screen in Portrait */
